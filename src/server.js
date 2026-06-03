@@ -9,7 +9,24 @@ const http = require('http');
  */
 function createServer() {
   const server = http.createServer((req, res) => {
-    /* Aquí la lógica del enrutador */
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+
+    if (req.url === '/') {
+      res.statusCode = 200;
+      res.end('Bienvenid@s! Gracias por tu visita.');
+    } else if (req.url === '/nosotros') {
+      res.statusCode = 200;
+      res.end('Bienvenid@s a saber + de nosotros :)');
+    } else if (req.url === '/cursos') {
+      res.statusCode = 200;
+      res.end('Te interesan nuestros cursos. Vení a conocer la oferta!');
+    } else if (req.url === '/contacto') {
+      res.statusCode = 200;
+      res.end('Si querés contactarnos, hacelo a este Email: :)');
+    } else {
+      res.statusCode = 404;
+      res.end('No se ha encontrado la ruta ingresada.');
+    }
   });
 
   return server;
